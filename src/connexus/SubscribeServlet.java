@@ -13,9 +13,10 @@ public class SubscribeServlet extends HttpServlet {
 		Scribe s = new Scribe(req.getParameter("streamID"),req.getParameter("userEmail"));
 		List<Scribe> th = new ArrayList<Scribe>(OfyService.ofy().load().type(Scribe.class).list());
 		Collections.sort(th);
+		System.out.println(th.size());
 		int i = 0;
 		for (Scribe t : th){
-			if (s.userName.equals(t.userName)){
+			if (s.streamID.equals(t.streamID)){
 				i = 1;
 			}
 		}
